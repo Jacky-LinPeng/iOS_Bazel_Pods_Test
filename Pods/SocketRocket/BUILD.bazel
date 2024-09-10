@@ -1,0 +1,23 @@
+load("@build_bazel_rules_ios//rules:framework.bzl", "apple_framework")
+
+apple_framework(
+    name = "SocketRocket",
+    srcs = glob([
+        "SocketRocket/**/*.h",
+        "SocketRocket/**/*.m",
+    ]),
+    platforms = {"ios": "11.0"},
+    public_headers = [
+        "SocketRocket/NSRunLoop+SRWebSocket.h",
+        "SocketRocket/NSURLRequest+SRWebSocket.h",
+        "SocketRocket/SocketRocket.h",
+        "SocketRocket/SRSecurityPolicy.h",
+        "SocketRocket/SRWebSocket.h",
+    ],
+    sdk_dylibs = ["icucore"],
+    sdk_frameworks = [
+        "CFNetwork",
+        "Security",
+    ],
+    visibility = ["//visibility:public"],
+)

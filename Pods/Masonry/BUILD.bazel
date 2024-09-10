@@ -1,0 +1,32 @@
+load("@build_bazel_rules_ios//rules:framework.bzl", "apple_framework")
+
+apple_framework(
+    name = "Masonry",
+    srcs = glob([
+        "Masonry/*.h",
+        "Masonry/*.m",
+    ]),
+    platforms = {"ios": "8.0"},
+    public_headers = [
+        "Masonry/MASCompositeConstraint.h",
+        "Masonry/MASConstraint+Private.h",
+        "Masonry/MASConstraint.h",
+        "Masonry/MASConstraintMaker.h",
+        "Masonry/MASLayoutConstraint.h",
+        "Masonry/Masonry.h",
+        "Masonry/MASUtilities.h",
+        "Masonry/MASViewAttribute.h",
+        "Masonry/MASViewConstraint.h",
+        "Masonry/NSArray+MASAdditions.h",
+        "Masonry/NSArray+MASShorthandAdditions.h",
+        "Masonry/NSLayoutConstraint+MASDebugAdditions.h",
+        "Masonry/View+MASAdditions.h",
+        "Masonry/View+MASShorthandAdditions.h",
+        "Masonry/ViewController+MASAdditions.h",
+    ],
+    sdk_frameworks = [
+        "Foundation",
+        "UIKit",
+    ],
+    visibility = ["//visibility:public"],
+)

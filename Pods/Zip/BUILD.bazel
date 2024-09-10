@@ -1,0 +1,20 @@
+load("@build_bazel_rules_ios//rules:framework.bzl", "apple_framework")
+
+apple_framework(
+    name = "Zip",
+    srcs = glob([
+        "Zip/*.swift",
+        "Zip/*.h",
+        "Zip/minizip/*.c",
+        "Zip/minizip/include/*.h",
+    ]),
+    platforms = {"ios": "9.0"},
+    public_headers = ["Zip/Zip.h"],
+    sdk_dylibs = ["z"],
+    swift_version = "5.3",
+    visibility = ["//visibility:public"],
+    xcconfig = {
+        "SWIFT_INCLUDE_PATHS": ["Zip/Zip/minizip/**"],
+        "LIBRARY_SEARCH_PATHS": ["Zip/Zip/"],
+    },
+)
